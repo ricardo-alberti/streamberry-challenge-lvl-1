@@ -1,6 +1,6 @@
 const { ApolloClient, InMemoryCache } = require('@apollo/client')
 
-const uri = 'http://localhost:4000/api'
+const uri = 'https://streamberry-challenge-lvl-1.vercel.app/api'
 const cache = new InMemoryCache();
 
 const client = new ApolloClient({
