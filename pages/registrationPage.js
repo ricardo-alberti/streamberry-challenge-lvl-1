@@ -8,18 +8,19 @@ function registrationPage(props) {
     async function getInput() {
         const userInput = await getUserInput('register');
 
-        if (isNaN(userInput.rating) === false) {
-            registerMovie(userInput)
-        } else {
-            setHeader()
-            console.log(' "Avaliação deve ser um numeral" \n')
-        }
-
         const year = /\b(?:19[2-9]\d|20[0-1]\d|202[0-4])\b/
 
         if (year.test(userInput.year) === false) {
-            console.log(' "Ano inserido inválido" \n')
+            console.log('\n Erro: "Ano inserido inválido" \n')
         }
+
+        if (isNaN(userInput.rating) === true){
+            console.log(' Erro: "Avaliação deve ser um numeral" \n')
+        }
+
+        if (isNaN(userInput.rating) === false && year.test(userInput.year) === true) {
+            registerMovie(userInput)
+        } 
 
         chooseAction()
     }
@@ -61,7 +62,7 @@ function registrationPage(props) {
         }
 
         else {
-            console.log(' "Erro ao cadastrar filme" \n')
+            console.log(' " Erro ao cadastrar filme" \n')
         }
 
     }
