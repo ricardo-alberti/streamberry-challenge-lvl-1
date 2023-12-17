@@ -8,6 +8,7 @@ const client = new ApolloClient({
     cache
 });
 
+//navigator
 function changePage(pageNumber){
     const { listPage, homePage, updatePage, deletionPage, searchPage, registrationPage } = require('./pages')
     if (pageNumber === 0) { homePage(changePage) }
@@ -16,8 +17,9 @@ function changePage(pageNumber){
     else if (pageNumber === 3){ updatePage({client, changePage}) }
     else if (pageNumber === 4){ deletionPage({client, changePage}) }
     else if (pageNumber === 5){ searchPage({client, changePage}) }
-    else { console.log('Entrada inválida'), homePage(changePage) }
 }
 
 const { homePage } = require('./pages')
+
+//default page
 homePage(changePage)

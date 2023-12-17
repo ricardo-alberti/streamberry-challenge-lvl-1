@@ -1,47 +1,10 @@
-const setHeader = require('../components/header')
-const getUserInput = require('../components/userInput');
+const setHeader = require('../components/header');
 const { UPDATE_MOVIE } = require('../mutations');
+
+const chooseAction = require('../components/chooseAction');
 
 function updatePage(props){
     setHeader()
-
-    async function getInput(){
-        const userInput = await getUserInput('update');
-        const year = /\b(?:19[2-9]\d|20[0-1]\d|202[0-4])\b/
-
-        if (year.test(userInput.year) === false) {
-            console.log('\n Erro: "Ano inserido inválido" \n')
-        }
-
-        if (isNaN(userInput.rating) === true){
-            console.log(' Erro: "Avaliação deve ser um numeral" \n')
-        }
-
-        if (isNaN(userInput.rating) === false && year.test(userInput.year) === true) {
-            updateMovie(userInput)
-        } 
-
-        chooseAction()
-    }
-
-    async function chooseAction(){
-        console.log(' Atualizar filme? \n')
-        const userInput = await getUserInput('chooseAction');
-
-        if (userInput === 1){
-            setHeader()
-            getInput()
-        }
-
-        else if (userInput === 2){
-            props.changePage(0)
-        }
-
-        else { 
-            setHeader()
-            chooseAction() 
-        }
-    }
 
     async function updateMovie(userInput){
         const result = await props.client.mutate({
@@ -62,12 +25,14 @@ function updatePage(props){
         }
 
         if (movie){
-            console.log(`\n-> Id: ${movie.id}\n   Título: ${movie.title} \n   Gênero: ${movie.genre} \n   Year: ${movie.year} \n   Rating: ${movie.rating} \n`)
+            console.log('\n Filme atualizado: ')
+            console.log(`\n     -> Id: ${movie.id}\n        Título: ${movie.title} \n        Gênero: ${movie.genre} \n        Year: ${movie.year} \n        Rating: ${movie.rating} \n`)
         }
 
+        chooseAction({ pageName: 'update', action: updateMovie, changePage: props.changePage })
     }
 
-    chooseAction()
+    chooseAction({ pageName: 'update', action: updateMovie, changePage: props.changePage })
 }
 
 module.exports = updatePage

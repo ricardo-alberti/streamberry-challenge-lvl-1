@@ -6,7 +6,7 @@ const readline = require('readline').createInterface({
 function getUserInput(pageName) {
     if (pageName === 'chooseAction') {
         return new Promise((resolve) => {
-            readline.question(' 1. Confirmar \n 2. Voltar para tela inicial \n\n', (choiceInput) => {
+            readline.question('     1. Confirmar \n     2. Voltar para tela inicial \n\n', (choiceInput) => {
                 resolve(parseInt(choiceInput))
             })
         })
@@ -14,7 +14,7 @@ function getUserInput(pageName) {
 
     if (pageName === 'delete') {
         return new Promise((resolve) => {
-            readline.question(' Id do filme: ', (idInput) => {
+            readline.question('     Id do filme: ', (idInput) => {
                 resolve(idInput)
             })
         })
@@ -22,7 +22,7 @@ function getUserInput(pageName) {
 
     if (pageName === 'search') {
         return new Promise((resolve) => {
-            readline.question(' Título do filme: ', (titleInput) => {
+            readline.question('     Título do filme: ', (titleInput) => {
                 resolve(titleInput)
             })
         })
@@ -30,10 +30,10 @@ function getUserInput(pageName) {
 
     if (pageName === 'register') {
         return new Promise((resolve) => {
-            readline.question(' Título do filme: ', (titleInput) => {
-                readline.question(' Gênero do filme: ', (genreInput) => {
-                    readline.question(' Ano do filme: ', (yearInput) => {
-                        readline.question(' Avaliação do filme: ', (ratingInput) => {
+            readline.question('     Título do filme: ', (titleInput) => {
+                readline.question('     Gênero do filme: ', (genreInput) => {
+                    readline.question('     Ano do filme: ', (yearInput) => {
+                        readline.question('     Avaliação do filme: ', (ratingInput) => {
                             resolve({title: titleInput, genre: genreInput, year: yearInput, rating: parseInt(ratingInput)});
                         });
                     });
@@ -44,11 +44,11 @@ function getUserInput(pageName) {
 
     if (pageName === 'update') {
         return new Promise((resolve) => {
-            readline.question(' Id do filme: ', (idInput) => {
-                readline.question(' Título do filme: ', (titleInput) => {
-                    readline.question(' Gênero do filme: ', (genreInput) => {
-                        readline.question(' Ano do filme: ', (yearInput) => {
-                            readline.question(' Avaliação do filme: ', (ratingInput) => {
+            readline.question('     Id do filme: ', (idInput) => {
+                readline.question('     Título do filme: ', (titleInput) => {
+                    readline.question('     Gênero do filme: ', (genreInput) => {
+                        readline.question('     Ano do filme: ', (yearInput) => {
+                            readline.question('     Avaliação do filme: ', (ratingInput) => {
                                 resolve({id: idInput, title: titleInput, genre: genreInput, year: yearInput, rating: parseInt(ratingInput)}) ;
                             });
                         });
@@ -58,11 +58,13 @@ function getUserInput(pageName) {
         });
     }
 
-    return new Promise((resolve) => {
-        readline.question('', (input) => {
-            resolve(parseInt(input));
+    if (pageName === 'home') { 
+        return new Promise((resolve) => {
+            readline.question('', (input) => {
+                resolve(parseInt(input));
+            });
         });
-    });
+    }
 }
 
 

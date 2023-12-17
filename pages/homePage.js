@@ -1,5 +1,5 @@
+const chooseAction = require('../components/chooseAction')
 const setHeader = require('../components/header')
-const getUserInput = require('../components/userInput')
 
 function homePage(changePage){
     setHeader()
@@ -12,12 +12,7 @@ function homePage(changePage){
     console.log('     4. Deletar')
     console.log('     5. Pesquisar \n')
 
-    async function getInput(){
-        const userInput = await getUserInput();
-        changePage(userInput)
-    }
-
-    getInput()
+    chooseAction({ pageName: 'home', changePage: changePage })
 }
 
 
