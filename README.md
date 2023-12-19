@@ -9,8 +9,5 @@ npm install
 ```
 2. RUN
 ```
-cd api/ && npm run dev
-```
-```
 node index.js
 ```
