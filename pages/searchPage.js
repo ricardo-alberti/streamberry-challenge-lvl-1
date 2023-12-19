@@ -16,12 +16,12 @@ function searchPage(props){
         const movie = result?.data?.movie
 
         if (!movie){
-            console.log(' Filme não encontrado \n')
+            console.log('\n "Filme não encontrado" \n')
         }
 
         if (movie){
             console.log('\n Filme encontrado: ')
-            console.log(`\n     -> Id: ${movie.id}\n        Título: ${movie.title} \n        Gênero: ${movie.genre} \n        Year: ${movie.year} \n        Rating: ${movie.rating} \n`)
+            console.log(`\n     -> Id: ${movie.id}\n        Título: ${movie.title} \n        Gênero: ${movie.genre} \n        Ano: ${movie.year} \n        Avaliação: ${movie.rating} \n`)
         }
 
         chooseAction({ pageName: 'search', action: searchMovie, changePage: props.changePage })

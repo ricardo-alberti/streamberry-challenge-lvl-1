@@ -17,6 +17,7 @@ function changePage(pageNumber){
     else if (pageNumber === 3){ updatePage({client, changePage}) }
     else if (pageNumber === 4){ deletionPage({client, changePage}) }
     else if (pageNumber === 5){ searchPage({client, changePage}) }
+    else { homePage(changePage) }
 }
 
 const { homePage } = require('./pages')

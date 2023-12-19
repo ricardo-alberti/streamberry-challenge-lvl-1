@@ -21,7 +21,7 @@ function registrationPage(props) {
 
         if (movie) {
             console.log('\n Filme Cadastrado: ')
-            console.log(`\n     -> Id: ${movie.id}\n        Título: ${movie.title} \n        Gênero: ${movie.genre} \n        Year: ${movie.year} \n        Rating: ${movie.rating} \n`)
+            console.log(`\n     -> Id: ${movie.id}\n        Título: ${movie.title} \n        Gênero: ${movie.genre} \n        Ano: ${movie.year} \n        Avaliação: ${movie.rating} \n`)
         }
 
         else {

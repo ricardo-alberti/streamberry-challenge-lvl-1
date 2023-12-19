@@ -1,14 +1,28 @@
 const setHeader = require('./header');
 const getUserInput = require('./userInput');
 
+let movieStart = 0
+let movieEnd = 4
+let listQuestion = ' Listar filmes? \n'
+
 async function chooseAction(props){
     let pageName = props?.pageName;
     let action = props?.action;
 
     async function resolveInput(){
         if (pageName === 'list'){
-            console.log(' Lista de Filmes: \n')
-            action()
+            console.log(' Lista de filmes: \n')
+            action(movieStart, movieEnd)
+
+            if (props?.resultLength <= movieEnd){
+                listQuestion = ' Listar filmes? \n'
+                movieStart = 0
+                movieEnd = 4
+            } else {
+                listQuestion = ' Ir para próxima página? \n'
+                movieEnd += 4
+                movieStart += 4
+            }
         } 
         
         if (pageName === 'search'  || pageName === 'delete'){
@@ -35,7 +49,7 @@ async function chooseAction(props){
     if (pageName === 'update') { console.log(' Atualizar filme? \n') }
     if (pageName === 'search') { console.log(' Pesquisar filme? \n') }
     if (pageName === 'register') { console.log(' Cadastar filme? \n') }
-    if (pageName === 'list') { console.log(' Listar filmes cadastrados? \n') }
+    if (pageName === 'list') { console.log(listQuestion) }
     if (pageName === 'delete') { console.log(' Deletar filme \n') }
 
     if (pageName === 'home'){
