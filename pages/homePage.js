@@ -5,7 +5,6 @@ function homePage(changePage){
     setHeader()
 
     console.log(' Digite o número da opção desejada:')
-
     console.log('     1. Cadastrar')
     console.log('     2. Listar')
     console.log('     3. Atualizar')
